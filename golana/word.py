@@ -1,12 +1,3 @@
-class OUROBOROS():
-    def __init__(self, word):
-        
-        self.word = word
-        self.link = self
-        self.link_after = self
-        self.link_before = self
-        
-
 class WORD():
 
     def __init__(self, word, 

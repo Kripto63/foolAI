@@ -7,12 +7,6 @@ class QUEUE():
         self.__ouroboros = ouroboros
         self.pointer = ouroboros
 
-    def add_element(self, word):
-        new_word = WORD(word, link_before=self.pointer, 
-             link_after=self.__ouroboros)
-        self.pointer.link_after = new_word
-        self.pointer = new_word
-        
     def get_pointer(self):
         return self.pointer.word
     

@@ -1,25 +1,44 @@
 from .registry import REGISTRY
 
-class QUEUE():
-    
+
+class QUEUE():    
     def __init__(self):
         self.registry = REGISTRY()
-        ouroboros = self.registry.add_element(word=".", link_before=self.registry, link_after=self.registry)
-
-    def get_element(self):
-        return self.registry.registry
+        self.__ouroboros = self.__add_element_ouroboros(new_word="(*_*)", new_link=self.registry)
+        self.pointer = self.registry
+        
+    def __add_element_ouroboros(self, new_word, new_link):
+        ouroboros = self.registry.add_element(word=new_word, link=new_link)
+        return ouroboros
     
-    def get_link(self):
-        return self.registry.registry[0].link
-    
-    def add_element(self, new_word):
-        for i in self.get_element():
-            if i.word == new_word and i.word != '.':
-                break
+    def __add_registry(self):
         new_registry = REGISTRY()
-        self.registry.registry.word
-        new_registry.add_element(word=new_word,
-                                 link_after=self.registry, link_before=new_registry)
-        self.registry = new_registry
+        self.pointer = new_registry
+    
+    def get_data_registry(self):
+        return self.pointer.get_registry()
+
+    def beginning(self):
+        self.pointer = self.__ouroboros.link
+        
+    def next_pointer(self, pointer):
+        self.pointer = pointer        
+        
+    def add_line(self, line):
+        self.beginning()
+        for new_word in line.split():
+            print(new_word)
+            for word_registry in self.get_data_registry():
+                if new_word == word_registry.word:
+                    print('1')
+                    break
+            tmp = self.pointer
+            self.__add_registry()
+            tmp.add_element(new_word, self.pointer)
+        
+        
+    
+        
+
         
         

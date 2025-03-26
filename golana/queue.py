@@ -1,28 +1,25 @@
-from .word import WORD, OUROBOROS
+from .registry import REGISTRY
 
 class QUEUE():
     
     def __init__(self):
-        ouroboros = OUROBOROS('.')
-        self.__ouroboros = ouroboros
-        self.pointer = ouroboros
+        self.registry = REGISTRY()
+        ouroboros = self.registry.add_element(word=".", link_before=self.registry, link_after=self.registry)
 
-    def get_pointer(self):
-        return self.pointer.word
+    def get_element(self):
+        return self.registry.registry
     
-    def move_ouroboros(self):
-        self.pointer = self.__ouroboros
-        
-    def next_element(self):
-        self.pointer = self.pointer.link_after
-        
-    def add_line(self, line) -> str:
-        self.move_ouroboros()
-        for word in line.split():
-            self.add_element(word=word)
-        
-        self.move_ouroboros()
-        
-        return "add line"  
+    def get_link(self):
+        return self.registry.registry[0].link
+    
+    def add_element(self, new_word):
+        for i in self.get_element():
+            if i.word == new_word and i.word != '.':
+                break
+        new_registry = REGISTRY()
+        self.registry.registry.word
+        new_registry.add_element(word=new_word,
+                                 link_after=self.registry, link_before=new_registry)
+        self.registry = new_registry
         
         

@@ -6,11 +6,11 @@ if __name__=="__main__":
     
     bd = QUEUE()
     
-    bd.add_line(data)
-    
-    for i in range(100):
-        print(bd.get_pointer())
-        bd.next_element()
+    print(bd.get_element()[0])
+    test = bd.get_link()
+    print(test.word)
+    bd.add_element('test')
+    print(bd.get_element()[0].word)
 
     
         

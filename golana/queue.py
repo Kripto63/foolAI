@@ -26,15 +26,21 @@ class QUEUE():
         
     def add_line(self, line):
         self.beginning()
-        for new_word in line.split():
-            print(new_word)
+        list_word = line.split()
+        for i in range(len(list_word)):
+            print(i)
             for word_registry in self.get_data_registry():
-                if new_word == word_registry.word:
-                    print('1')
+                if list_word[i] == word_registry.word:
                     break
-            tmp = self.pointer
-            self.__add_registry()
-            tmp.add_element(new_word, self.pointer)
+            if len(list_word) != i+1:
+                tmp = self.pointer
+                self.__add_registry()
+                tmp.add_element(list_word[i], self.pointer)
+                
+                
+            elif len(list_word) == i+1:
+                self.pointer.add_element(list_word[i], self.__ouroboros)
+                self.beginning()
         
         
     

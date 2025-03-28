@@ -10,4 +10,5 @@ class REGISTRY():
         return element
 
     def get_registry(self):
+        print(self.registry)
         return self.registry
